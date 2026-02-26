@@ -6,20 +6,14 @@
 <title>Mimansha ❤️ Shyam</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 body{
   margin:0;
   font-family:'Georgia', serif;
   background: linear-gradient(180deg,#fde2e4,#fff1e6,#e0f7fa);
   color:#333;
 }
-
-section{
-  padding:50px 18px;
-}
-
+section{padding:50px 18px;}
 .card{
   background:rgba(255,255,255,0.95);
   border-radius:22px;
@@ -27,34 +21,10 @@ section{
   box-shadow:0 18px 35px rgba(0,0,0,0.15);
   margin-bottom:35px;
 }
-
-h1{
-  text-align:center;
-  color:#d6336c;
-  font-size:30px;
-  margin-bottom:8px;
-}
-
-h2{
-  text-align:center;
-  font-size:14px;
-  letter-spacing:2px;
-  color:#777;
-  margin-bottom:20px;
-}
-
-p{
-  font-size:16px;
-  line-height:1.85;
-  text-align:center;
-}
-
-.slider img{
-  width:100%;
-  border-radius:18px;
-  margin-bottom:15px;
-}
-
+h1{text-align:center;color:#d6336c;font-size:30px;margin-bottom:8px;}
+h2{text-align:center;font-size:14px;letter-spacing:2px;color:#777;margin-bottom:20px;}
+p{font-size:16px;line-height:1.85;text-align:center;}
+.slider img{width:100%;border-radius:18px;margin-bottom:15px;}
 button{
   width:100%;
   padding:15px;
@@ -64,43 +34,32 @@ button{
   color:white;
   font-size:16px;
   margin-bottom:20px;
+  cursor:pointer;
+  transition:0.3s;
 }
-
-.timeline div{
-  padding-left:15px;
-  margin:14px 0;
-  border-left:3px solid #ff6b81;
-  font-size:15px;
-}
-
-footer{
-  text-align:center;
-  margin-top:18px;
-  font-size:14px;
-  color:#777;
-}
+button:hover{background:#ff4d6d;}
+.timeline div{padding-left:15px;margin:14px 0;border-left:3px solid #ff6b81;font-size:15px;}
+footer{text-align:center;margin-top:18px;font-size:14px;color:#777;}
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
-<audio id="music" loop>
-  <source src="https://cdn.pixabay.com/audio/2023/03/02/audio_0e9b8bfb4b.mp3">
+<!-- AUDIO -->
+<audio id="bgMusic" preload="auto" loop>
+  <source src="song.mpeg" type="audio/mpeg">
 </audio>
 
 <section class="card">
 <h1>Mimansha 💗</h1>
 <h2>MY LOVE • MY WIFEYYY • MY FOREVER</h2>
 
-<button onclick="document.getElementById('music').play()">
-▶ Tap to Feel the Love
-</button>
+<button id="playBtn">▶ Tap to Feel the Love</button>
 
 <div class="slider">
-  <img src="photo1.jpeg">
-  <img src="photo2.jpeg">
-  <img src="photo3.jpeg">
+  <img src="photo1.jpeg" alt="Mimansha & Shyam 1">
+  <img src="photo2.jpeg" alt="Mimansha & Shyam 2">
+  <img src="photo3.jpeg" alt="Mimansha & Shyam 3">
 </div>
 
 <p>
@@ -158,6 +117,19 @@ Forever Yours ❤️<br>
 </footer>
 </section>
 
+<script>
+const btn = document.getElementById("playBtn");
+const music = document.getElementById("bgMusic");
+
+btn.addEventListener("click", () => {
+  music.play().then(()=>{
+    btn.innerText="🎶 Playing...";
+  }).catch(err=>{
+    alert("Please increase volume & tap again 💗");
+    console.log(err);
+  });
+});
+</script>
+
 </body>
 </html>
-
