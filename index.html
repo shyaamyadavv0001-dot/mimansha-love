@@ -12,6 +12,8 @@ body{
   font-family:'Georgia', serif;
   background: linear-gradient(180deg,#fde2e4,#fff1e6,#e0f7fa);
   color:#333;
+  position:relative;
+  overflow-x:hidden;
 }
 section{padding:50px 18px;}
 .card{
@@ -24,7 +26,15 @@ section{padding:50px 18px;}
 h1{text-align:center;color:#d6336c;font-size:30px;margin-bottom:8px;}
 h2{text-align:center;font-size:14px;letter-spacing:2px;color:#777;margin-bottom:20px;}
 p{font-size:16px;line-height:1.85;text-align:center;}
-.slider img{width:100%;border-radius:18px;margin-bottom:15px;}
+.slider img{
+  width:100%;
+  border-radius:18px;
+  margin-bottom:15px;
+  transition: transform 0.5s ease;
+}
+.slider img:hover{
+  transform: scale(1.05);
+}
 button{
   width:100%;
   padding:15px;
@@ -38,8 +48,31 @@ button{
   transition:0.3s;
 }
 button:hover{background:#ff4d6d;}
-.timeline div{padding-left:15px;margin:14px 0;border-left:3px solid #ff6b81;font-size:15px;}
+button.playing{
+  background:#ff1a75;
+  box-shadow:0 0 20px #ff66a3;
+}
+.timeline div{
+  padding-left:15px;
+  margin:14px 0;
+  border-left:3px solid #ff6b81;
+  font-size:15px;
+}
 footer{text-align:center;margin-top:18px;font-size:14px;color:#777;}
+
+/* Floating Hearts */
+@keyframes floatHeart {
+  0% {transform: translateY(0) rotate(0deg);}
+  50% {transform: translateY(-20px) rotate(15deg);}
+  100% {transform: translateY(0) rotate(-15deg);}
+}
+.heart{
+  position:absolute;
+  font-size:24px;
+  color:#ff4d6d;
+  animation: floatHeart 3s ease-in-out infinite;
+  pointer-events:none;
+}
 </style>
 </head>
 
@@ -76,12 +109,14 @@ jaise har mod par sirf tum hi meri manzil ho.
 <br><br>
 Abhi toh bss 8 mahine huye prr trust me babyy
 ye 8 mahine kab (8 janmo) toh nhi prr
-7 janmi me badal dunga 💗😅
+7 janmo me badal dunga 💗😅
 <br><br>
 bss tumhe humesa saath dena babyy
 aur main vaada karta hoo mere jiwan me
 bss tum rahogi na tum jaisi na tumse acchi
 kyuki tum best nhi bestest ho meri jaan... 💗
+<br><br>
+I LOVE YOU SOO MUCH BABYYY💗
 </p>
 
 <footer>
@@ -118,17 +153,29 @@ Forever Yours ❤️<br>
 </section>
 
 <script>
+/* MUSIC PLAY */
 const btn = document.getElementById("playBtn");
 const music = document.getElementById("bgMusic");
 
 btn.addEventListener("click", () => {
   music.play().then(()=>{
     btn.innerText="🎶 Playing...";
+    btn.classList.add('playing');
   }).catch(err=>{
     alert("Please increase volume & tap again 💗");
     console.log(err);
   });
 });
+
+/* FLOATING HEARTS */
+for(let i=0;i<15;i++){
+  let heart = document.createElement('div');
+  heart.className='heart';
+  heart.style.left = Math.random()*90 + '%';
+  heart.style.top = Math.random()*80 + '%';
+  heart.innerText='💖';
+  document.body.appendChild(heart);
+}
 </script>
 
 </body>
