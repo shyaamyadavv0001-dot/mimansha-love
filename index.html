@@ -85,16 +85,25 @@ footer{
 <body>
 
 <!-- MUSIC -->
-<audio id="music" loop>
-  <source src="https://cdn.pixabay.com/audio/2023/03/02/audio_0e9b8bfb4b.mp3">
+<audio id="bgMusic" preload="auto">
+  <source src="song.mp3" type="audio/mpeg">
 </audio>
 
-<section class="card">
-<h1>Mimansha 💗</h1>
-<h2>MY LOVE • MY WIFEYYY • MY FOREVER</h2>
+<button id="playBtn">💗 Tap to Feel the Love</button>
 
-<button onclick="document.getElementById('music').play()">
-▶ Tap to Feel the Love
+<script>
+  const btn = document.getElementById("playBtn");
+  const music = document.getElementById("bgMusic");
+
+  btn.addEventListener("click", () => {
+    music.play().then(() => {
+      btn.innerText = "🎶 Playing...";
+    }).catch(err => {
+      alert("Please increase volume & tap again 💗");
+      console.log(err);
+    });
+  });
+</script>
 </button>
 
 <div class="slider">
@@ -160,3 +169,4 @@ Forever Yours ❤️<br>
 
 </body>
 </html>
+
